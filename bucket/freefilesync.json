@@ -1,0 +1,46 @@
+{
+    "version": "13.1",
+    "description": "Open Source folder comparison and synchronization software",
+    "homepage": "https://freefilesync.org",
+    "license": "GPL-3.0-only",
+    "url": "E:\\FreeFileSync_13.1_Windows_Portable.zip",
+    "hash": "dc50a8025b14ed6b0dddd379d7e1eb6810f868f0ffbf41d2600cfe26e2354791",
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\GlobalSettings.xml\") { ",
+        "    Copy-Item \"$persist_dir\\GlobalSettings.xml\" \"$dir\" ",
+        "}",
+        "if (Test-Path \"$persist_dir\\LastRun.ffs_gui\") { ",
+        "    Copy-Item \"$persist_dir\\LastRun.ffs_gui\" \"$dir\" ",
+        "}",
+        "if (Test-Path \"$persist_dir\\Install.dat\") { ",
+        "    Copy-Item \"$persist_dir\\Install.dat\" \"$dir\" ",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$dir\\GlobalSettings.xml\") { ",
+            "    Copy-Item \"$dir\\GlobalSettings.xml\" \"$persist_dir\" -Force ",
+            "}",
+            "if (Test-Path \"$dir\\LastRun.ffs_gui\") { ",
+            "    Copy-Item \"$dir\\LastRun.ffs_gui\" \"$persist_dir\" -Force ",
+            "}",
+            "if (Test-Path \"$dir\\Install.dat\") { ",
+            "    Copy-Item \"$dir\\Install.dat\" \"$persist_dir\" -Force ",
+            "}"
+        ]
+    },
+    "bin": [
+        "freefilesync.exe",
+        "realtimesync.exe"
+    ],
+    "shortcuts": [
+        [
+            "freefilesync.exe",
+            "FreeFileSync"
+        ],
+        [
+            "realtimesync.exe",
+            "RealTimeSync"
+        ]
+    ]
+}
